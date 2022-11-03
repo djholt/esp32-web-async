@@ -16,3 +16,9 @@ document.querySelector("#led-on").onclick = function () {
 document.querySelector("#led-off").onclick = function () {
   setLED(false);
 };
+
+var socket = new WebSocket('ws://' + window.location.host + '/ws');
+
+socket.onmessage = function (event) {
+  document.querySelector("#websocket-message").innerHTML = event.data;
+};
